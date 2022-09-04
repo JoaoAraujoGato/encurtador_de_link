@@ -9,10 +9,10 @@ Sistema capaz de encurtar URLs de cada usuario, disponibilizando uma tabela para
 - Tabela de links
 
 ## Membros da equipe e papel
-- Alexis Mariz - 
-- Gabriel Reis - 
+- Alexis Mariz - frontend
+- Gabriel Reis - backend
 - João Vitor Gato - full stack
-- Tomas Danelon - 
+- Tomas Danelon - full stack
 
 ## Tecnologias
 - SQLite
