@@ -20,12 +20,12 @@ Sistema capaz de encurtar URLs de cada usuario, disponibilizando uma tabela para
 - Bootstrap
 - React Js
 
-### Tarefas Técnicas
+## Tarefas Técnicas
 - Criar o ambiente de desenvolvimento
 - Desenvolver o banco de dados
 - Design da interface web
 
-### Backlog
+## Backlog
 - Como usuário típico quero me cadastrar e realizar login no sistema
   Tarefas:
     - Criar um design da interface web (Figma)
