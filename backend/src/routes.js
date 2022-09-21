@@ -12,8 +12,8 @@ const UserValidator = require("./validators/UserValidator");
 routes.get("/user/:userId", UserValidator.getById, UserController.getById);        // Busca um usuario
 routes.get("/users", UserController.index);                 // Lista todos os usuarios
 routes.post("/user", UserValidator.create, UserController.create);                // Cria um usuario
-routes.put("/user/:userId", UserValidator.update, auth.authenticateToken, UserController.update);         // Atualiza um usuario
-routes.delete("/user/:userId", UserValidator.delete, auth.authenticateToken, UserController.delete);      // Deleta um usuario
+routes.put("/user/:userId", UserValidator.update, UserController.update);         // Atualiza um usuario
+routes.delete("/user/:userId", UserValidator.delete, UserController.delete);      // Deleta um usuario
 
 // Session
 routes.post("/login", SessionController.signIn);
