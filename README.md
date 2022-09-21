@@ -21,7 +21,7 @@ Sistema capaz de encurtar URLs de cada usuario, disponibilizando uma tabela para
 - React Js
 
 ## Tarefas Técnicas
-- Criar o ambiente de desenvolvimento
+- Criar o ambiente de desenvolvimento;
 - Desenvolver o banco de dados;
 - Design da interface web.
 
