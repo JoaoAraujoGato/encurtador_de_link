@@ -4,6 +4,9 @@ exports.up = function(knex) {
         table.string('name').notNullable();
         table.string('email').notNullable();
         table.string('firebaseId').notNullable();
+        table.string('idade').notNullable();
+        table.string('endereco');
+        table.string('telefone');
     })
 };
 

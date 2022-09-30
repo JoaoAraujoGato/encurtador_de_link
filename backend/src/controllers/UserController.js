@@ -25,7 +25,7 @@ module.exports = {
         try {
             const { userId } = request.params;
             const result = await UserModel.getById(userId);
-
+            
             return response.status(200).json(result);
         } catch (err) {
             console.log("User getBId failed: " + err);

@@ -18,4 +18,7 @@ routes.delete("/user/:userId", UserValidator.delete, UserController.delete);    
 // Session
 routes.post("/login", SessionController.signIn);
 
+// Links
+//routes.post("/link", )
+
 module.exports = routes;
