@@ -1,7 +1,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("link", function (table) {
         table.string("linkId").primary().notNullable();
-        table.foreign("userId").references("userId").inTable("user").onDelete("cascade"); //string("userId").notNullable();
+        table.string('userId').unsigned().index().references('userId').inTable('user').onDelete("cascade");
         table.string("linkEncurtado").notNullable();
         table.string("linkOriginal").notNullable();
         table.string("contadorCliques").notNullable();
