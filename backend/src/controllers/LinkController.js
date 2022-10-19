@@ -30,6 +30,20 @@ module.exports = {
         }
     },
 
+    async getByUserId(request, response){
+        try {
+            const { userId } = request.params;
+            const result = await LinkModel.getByUserId(userId);
+            
+            return response.status(200).json(result);
+        } catch (err) {
+            console.log("Link getBUserId failed: " + err);
+            return response.status(500).json({
+                Notification : "Internal server error while trying to get Link",
+            });
+        }
+    },
+
     async index(request, response){
         const link = await LinkModel.index();
         return response.json(link);

@@ -16,7 +16,7 @@ module.exports = {
         return result;
     },
 
-    // Busca de um usuario por um campo
+    // Busca de um link por um campo
     async getByFields(fields) {
         const result = await connection("link")
             .where(fields)
@@ -25,10 +25,19 @@ module.exports = {
         return result;
     },
 
-    // Busca de um usuario pelo seu id
+    // Busca de um link pelo seu id
     async getById(linkId){
         const result = await connection("link")
             .where({ linkId: linkId })
+            .select("*")
+            .first();
+        return result;
+    },
+
+    // Busca de um link pelo id de usuário
+    async getByUserId(userId){
+        const result = await connection("link")
+            .where({ userId: userId })
             .select("*")
             .first();
         return result;
