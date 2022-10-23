@@ -9,6 +9,7 @@ export default function Encurtador(){
             <button onClick={() => history.push("/login")}>Login</button>
             <button onClick={() => history.push("/perfil")}>Perfil</button>
             <button onClick={() => history.push("/cadastro")}>Cadastro</button>
+            <button onClick={() => history.push("/analytics")}>Analytics</button>
             <button onClick={() => history.push("/")}>Encurtador</button>
         </>
     )
