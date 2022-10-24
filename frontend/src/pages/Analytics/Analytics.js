@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Chart } from "react-google-charts"; 
+// import api from "../../services/api";
 
 export default function Encurtador(){
     const history = useHistory();
 
     const [chartData, setChartData] = useState([["Link", "Cliques"]]);
+    // const [linksUser, setLinksUser] = useState({});
+
+    // async function getLinks() {
+    //     try {
+    //         const response = await api.get('links');
+    //         setLinksUser(response.data);
+    //     } catch (error) {
+    //         console.warn(error);
+    //     }
+    // }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // useEffect(getLinks(), []);
 
     useEffect(() => {
         const copiaChartData = chartData;
@@ -24,7 +38,8 @@ export default function Encurtador(){
             {id: '12', titulo: 'link 12', contadorCliques: 11},
             {id: '13', titulo: 'link 13', contadorCliques: 9}
         ];
-        
+
+        // se for igual 1 quer dizer que não pegamos nenhum link para exibir no gráfico
         if(chartData.length === 1){
             const linksOrdenadosDecrescente = meusLinks.sort((a, b) => {
                 return a.contadorCliques > b.contadorCliques ? -1 : a.contadorCliques < b.contadorCliques ? 1 : 0;
@@ -52,7 +67,7 @@ export default function Encurtador(){
                 <button onClick={() => history.push("/login")}>Login</button>
                 <button onClick={() => history.push("/perfil")}>Perfil</button>
                 <button onClick={() => history.push("/cadastro")}>Cadastro</button>
-                <button onClick={() => history.push("/analytics")}>Analytics</button>
+                <button onClick={() => history.push("/link/123")}>Link</button>
                 <button onClick={() => history.push("/")}>Encurtador</button>
             </div>
             <div>
