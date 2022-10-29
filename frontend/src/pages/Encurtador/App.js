@@ -1,4 +1,4 @@
-import "./Encurtador.css";
+import "./App.css";
 import { React, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import axios from "axios";
