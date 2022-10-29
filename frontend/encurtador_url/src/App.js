@@ -1,4 +1,4 @@
-import "./Encurtador.css";
+import "./App.css";
 import { React, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import axios from "axios";
@@ -59,19 +59,3 @@ function App() {
 
 
 export default App;
-
-// import React from "react";
-// import { useHistory } from "react-router-dom";
-
-// export default function Encurtador(){
-//     const history = useHistory();
-//     return (
-//         <>
-//             <h1>Encurtador</h1>
-//             <button onClick={() => history.push("/login")}>Login</button>
-//             <button onClick={() => history.push("/perfil")}>Perfil</button>
-//             <button onClick={() => history.push("/cadastro")}>Cadastro</button>
-//             <button onClick={() => history.push("/")}>Encurtador</button>
-//         </>
-//     )
-// }
