@@ -1,0 +1,10 @@
+.link-curto button {
+    border-radius: 5px;
+    border-width: 0ch;
+    background-color: whitesmoke;
+    transition: filter 0.2s;
+}
+
+.link-curto button:hover {
+    filter: brightness(70%)
+}

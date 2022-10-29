@@ -38,8 +38,7 @@ module.exports = {
     async getByUserId(userId){
         const result = await connection("link")
             .where({ userId: userId })
-            .select("*")
-            .first();
+            .select("*");
         return result;
     },
 

@@ -1,0 +1,11 @@
+.botoes button {
+    background-color: #f73816;
+    color: white;
+    border-width: 0;
+    border-radius: 5px;
+    transition: filter 0.2s;
+}
+
+.botoes button:hover {
+    filter: brightness(70%)
+}

@@ -3,7 +3,7 @@ import { React, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import axios from "axios";
 
-function App() {
+function Encurtador() {
   const [shortenedLink, setShortenedLink] = useState("");
   const [userInput, setUserInput] = useState("");
   const fetchData = async () => {
@@ -58,7 +58,7 @@ function App() {
 }
 
 
-export default App;
+export default Encurtador;
 
 // import React from "react";
 // import { useHistory } from "react-router-dom";
