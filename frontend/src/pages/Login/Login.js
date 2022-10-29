@@ -14,8 +14,6 @@ export default function Login(){
     async function loginUsuario(form) {
         try{
             const response = await api.post("/login", form);
-            //conferir o que sai do response
-            console.log('response >>> ', response);
             alert(`Bem vindo ${response.data.user.name}`);
             logIn(response.data.accessToken);
             userId(response.data.user.userId);

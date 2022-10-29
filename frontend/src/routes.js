@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/Login";
 import Perfil from "./pages/Perfil";
