@@ -6,7 +6,6 @@ exports.up = function(knex) {
         table.string("linkEncurtado").notNullable();
         table.string("linkOriginal").notNullable();
         table.string("contadorCliques").notNullable();
-        table.string("qrCode").notNullable();
     })
 };
 

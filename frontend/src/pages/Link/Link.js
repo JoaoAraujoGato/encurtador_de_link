@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import api from "../../services/api";
+import QRCodeCanvas from "../QRCode/QRCodeCanvas";
 import "./Link.css";
 
 export default function Encurtador(){
@@ -53,7 +54,7 @@ export default function Encurtador(){
                 </button>
             </div>
             <div className="mt-2">
-                QRCODE: {link.qrCode}
+                <QRCodeCanvas text={link.linkEncurtado} />
             </div>
             <ToastContainer />
         </div>

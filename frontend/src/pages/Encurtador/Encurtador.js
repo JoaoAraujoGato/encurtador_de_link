@@ -1,77 +1,95 @@
 import "./Encurtador.css";
 import { React, useState } from "react";
-import CopyToClipboard from "react-copy-to-clipboard";
 import axios from "axios";
+import { Form, FormGroupInput } from "react-bootstrap-utils";
+import api from "../../services/api";
+import { USER_ID } from "../../services/auth";
+import QRCodeCanvas from "../QRCode/QRCodeCanvas";
 
-function Encurtador() {
+export default function Encurtador() {
   const [shortenedLink, setShortenedLink] = useState("");
-  const [userInput, setUserInput] = useState("");
-  const fetchData = async () => {
-    try {
-      const response = await axios(
-        `https://api.shrtco.de/v2/shorten?url=${userInput}`
-      );
-      setShortenedLink(response.data.result.full_short_link);
-    } catch (e) {
-      console.log(e);
+  const [link, setDadosLink] = useState();
+  const [idLink, setLinkId] = useState("");
+  const idUsuario = sessionStorage.getItem(USER_ID);
+  async function encurtarLink({titulo, linkOriginal}){
+    const responseEncurtador = await axios(
+      `https://api.shrtco.de/v2/shorten?url=${linkOriginal}`
+    );
+    setShortenedLink(responseEncurtador.data.result.full_short_link);
+    
+    if(!idUsuario) {
+      return;
     }
-  };
+
+    const dadosLink = {
+      userId: idUsuario,
+      titulo: titulo,
+      linkEncurtado: responseEncurtador.data.result.full_short_link,
+      linkOriginal: linkOriginal,
+      contadorCliques: "1",
+    };
+
+    setDadosLink(dadosLink);
+
+    try {
+      const response = await api.post("/link", dadosLink);
+      setLinkId(response.data);
+    } catch(error) {
+      console.warn(error);
+    }
+  }
+
+  async function copyLink() {
+    await navigator.clipboard.writeText(shortenedLink);
+    if(idUsuario){
+      const numeroCliques = parseInt(link.contadorCliques, 10) + 1;
+      await api.put(`link/${idLink.linkId}`, {contadorCliques: numeroCliques.toString()});
+    }
+  }
+
   return (
-    <div className=" container h-screen flex justify-center items-center">
-      <div className=" text-center">
-        <div>
-        <header className="p-4 mb-10 bg-indigo-500">
-          
-            <div className="max-w-5xl m-auto">
-              <div className="text-xl font-bold text-white">Encurtador de Links</div>
+    <div className="fullPageEncurtador d-flex justify-content-center flex-column">
+      <h2>Encurtar Link</h2>
+      <div className="boxEncurtador mt-2">
+        <Form
+          onSubmit={(dadosForm) => encurtarLink(dadosForm)}
+          initialValues={{}}
+          customActions={
+            <div className="d-flex justify-content-center">
+              <button className="btn btn-sm" type="submit">Encurtar Link</button>
             </div>
-          </header>
-          <input
-            className="outline-none border-2 border-indigo-500 rounded-md backdrop-blur-xl bg-white/20 shadow-md px-3 py-3"
-            type="text"
-            placeholder="Insira aqui o link"
-            value={userInput}
-            onChange={(e) => {
-              setUserInput(e.target.value);
-            }}
-          />
-          <button
-            className=" bg-indigo-500 text-white px-8 py-3 ml-4 rounded-md"
-            onClick={() => {
-              fetchData();
-            }}
-          >
-            Encurtar URL
-          </button>
-          <div className=" mt-5">
-            {shortenedLink}
-            <CopyToClipboard text={shortenedLink}>
-              <button className="border-2 border-indigo-500 text-indigo-500 font-medium px-5 py-2 ml-4 rounded-md">
-                Copiar URL
-              </button>
-            </CopyToClipboard>
+          }
+        >
+          <div className="col">
+            <div className="col">
+                <FormGroupInput
+                    name="titulo"
+                    type="string"
+                    label="Titulo"
+                    required
+                />
+            </div>
+            <div className="col">
+                <FormGroupInput
+                    name="linkOriginal"
+                    type="string"
+                    label="Link original"
+                    required
+                />
+            </div>
           </div>
+        </Form>
+
+        <div className="d-flex justify-content-center align-items-center flex-column mb-2">
+          <div className="d-flex align-items-center flex-column mt-5">
+            <h6>{shortenedLink}</h6>
+            <button type="button" className="btn btn-sm" onClick={copyLink}>
+              Copiar Link
+            </button>
+          </div>
+          <QRCodeCanvas text={shortenedLink} />
         </div>
       </div>
     </div>
   );
 }
-
-
-export default Encurtador;
-
-// import React from "react";
-// import { useHistory } from "react-router-dom";
-
-// export default function Encurtador(){
-//     const history = useHistory();
-//     return (
-//         <>
-//             <h1>Encurtador</h1>
-//             <button onClick={() => history.push("/login")}>Login</button>
-//             <button onClick={() => history.push("/perfil")}>Perfil</button>
-//             <button onClick={() => history.push("/cadastro")}>Cadastro</button>
-//             <button onClick={() => history.push("/")}>Encurtador</button>
-//         </>
-//     )
-// }
